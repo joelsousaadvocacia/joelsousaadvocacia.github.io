@@ -4,121 +4,769 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joel Sousa | Advocacia e Consultoria</title>
+    <!-- Fontes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --azul-escuro: #0a192f;
+            --azul-escuro: #091424;
+            --azul-medio: #0f2442;
             --dourado: #c5a059;
+            --dourado-claro: #e5c17b;
             --branco: #ffffff;
-            --cinza: #f4f4f4;
+            --cinza-fundo: #f8f9fa;
+            --cinza-texto: #495057;
+            --transicao: all 0.3s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
-        body { background-color: var(--cinza); color: #333; line-height: 1.6; }
+        body { 
+            background-color: var(--cinza-fundo); 
+            color: var(--cinza-texto); 
+            line-height: 1.8; 
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
 
+        /* MENU DE NAVEGAÇÃO */
+        nav {
+            background: rgba(9, 20, 36, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            padding: 15px 0;
+            border-bottom: 2px solid var(--dourado);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-family: 'Cinzel', serif;
+            color: var(--dourado);
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: var(--branco);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transicao);
+        }
+        .nav-links a:hover {
+            color: var(--dourado);
+        }
+
+        /* HERO SECTION */
         header {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-medio) 100%);
+            color: var(--branco);
+            padding: 160px 20px 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 { 
+            font-family: 'Cinzel', serif;
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+            color: var(--dourado); 
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        header p { 
+            font-size: 1.2rem; 
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #d1d5db;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 12px 35px;
+            background: transparent;
+            color: var(--dourado);
+            border: 2px solid var(--dourado);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transicao);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-hero:hover {
+            background: var(--dourado);
+            color: var(--azul-escuro);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+        }
+
+        /* SEÇÕES DO SITE */
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: var(--azul-escuro);
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--dourado);
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: 60px auto; 
+            padding: 0 20px;
+        }
+
+        /* BOX SOBRE O ESCRITÓRIO */
+        .about-box {
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about-box p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* CARDS DE ÁREAS DE ATUAÇÃO */
+        .grid-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .card-area {
+            background: var(--branco);
+            padding: 35px 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: var(--transicao);
+            border-top: 3px solid transparent;
+        }
+        .card-area:hover {
+            transform: translateY(-5px);
+            border-top: 3px solid var(--dourado);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .card-area i {
+            font-size: 2.5rem;
+            color: var(--dourado);
+            margin-bottom: 20px;
+        }
+        .card-area h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--azul-escuro);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* SEÇÃO DE NOTÍCIAS / BIBLIOTECA */
+        .grid-noticias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card-noticia {
+            background: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: var(--transicao);
+            display: flex;
+            flex-direction: column;
+        }
+        .card-noticia:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .noticia-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background-color: #eee;
+        }
+        .noticia-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card-noticia:hover .noticia-img-container img {
+            transform: scale(1.08);
+        }
+        .noticia-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .noticia-tag {
+            align-self: flex-start;
+            background: rgba(197, 160, 89, 0.15);
+            color: #967333;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .noticia-data {
+            font-size: 0.8rem;
+            color: #a0aec0;
+            margin-bottom: 10px;
+        }
+        .noticia-content h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--azul-escuro);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .noticia-content p {
+            font-size: 0.95rem;
+            color: #626973;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .btn-ler-mais {
+            color: var(--dourado);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transicao);
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-ler-mais i {
+            margin-left: 6px;
+            font-size: 0.8rem;
+            transition: var(--transicao);
+        }
+        .btn-ler-mais:hover {
+            color: var(--azul-escuro);
+        }
+        .btn-ler-mais:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ESTRUTURA DOS MODAIS INTERNOS DAS MATÉRIAS */
+        .modal-noticia {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(9, 20, 36, 0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: var(--branco);
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-top: 4px solid var(--dourado);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.8rem;
+            color: var(--azul-escuro);
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+        .modal-close:hover {
+            color: var(--dourado);
+        }
+        .modal-content h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+        .modal-meta {
+            font-size: 0.85rem;
+            color: var(--dourado);
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .modal-text p {
+            margin-bottom: 15px;
+            color: var(--cinza-texto);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* SEÇÃO FAQ (PERGUNTAS FREQUENTES) */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-category-title {
+            font-family: 'Cinzel', serif;
+            color: var(--azul-escuro);
+            font-size: 1.3rem;
+            margin: 35px 0 15px 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .faq-item {
+            background: var(--branco);
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--dourado);
+            padding: 20px;
+        }
+        .faq-question {
+            font-weight: 600;
+            color: var(--azul-escuro);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .faq-question i {
+            color: var(--dourado);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        .faq-answer {
+            color: #555;
+            font-size: 0.95rem;
+            padding-left: 20px;
+        }
+
+        /* GRID CONTATO E FORMULÁRIO */
+        .grid-contato {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .grid-contato { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.2rem; }
+        }
+
+        .info-contato {
             background: var(--azul-escuro);
             color: var(--branco);
-            padding: 60px 20px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        .info-contato h2 { color: var(--dourado); font-family: 'Cinzel', serif; margin-bottom: 25px;}
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .info-item i {
+            font-size: 1.4rem;
+            color: var(--dourado);
+            margin-right: 15px;
+            width: 30px;
             text-align: center;
-            border-bottom: 4px solid var(--dourado);
         }
 
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--dourado); }
-
-        .container { max-width: 800px; margin: 40px auto; background: var(--branco); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-
-        h2 { color: var(--azul-escuro); margin-bottom: 20px; border-left: 5px solid var(--dourado); padding-left: 10px; }
-
-        p { margin-bottom: 15px; }
-
-        /* Estilo do Formulário */
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        /* FORMULÁRIO */
+        .form-box {
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .form-group { margin-bottom: 20px; }
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--azul-escuro);
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 4px; 
+            background-color: #f8fafc;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transicao);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--dourado);
+            background-color: var(--branco);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+        }
         
         .btn-enviar {
             background: var(--azul-escuro);
             color: var(--dourado);
-            padding: 12px 25px;
-            border: none;
+            padding: 14px 30px;
+            border: 1px solid var(--dourado);
             border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             width: 100%;
-            font-size: 1rem;
-            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transicao);
         }
 
-        .btn-enviar:hover { background: #1a2a44; color: var(--branco); }
+        .btn-enviar:hover { 
+            background: var(--dourado); 
+            color: var(--azul-escuro); 
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
+        }
 
         /* BOTÃO WHATSAPP FLUTUANTE */
         .whatsapp-fixed {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 25px;
-            right: 25px;
+            bottom: 30px;
+            right: 30px;
             background-color: #25d366;
             color: #FFF;
-            border-radius: 50px;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: 0.3s;
+            transition: var(--transicao);
         }
 
         .whatsapp-fixed:hover {
-            background-color: #128c7e;
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
-        footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #666; }
+        footer { 
+            background-color: var(--azul-escuro);
+            color: #a0aec0;
+            text-align: center; 
+            padding: 30px 20px; 
+            font-size: 0.85rem; 
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
     </style>
 </head>
 <body>
 
+<!-- MENU DE NAVEGAÇÃO -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">JOEL SOUSA</a>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#atuacao">Atuação</a>
+            <a href="#biblioteca">Biblioteca</a>
+            <a href="#faq">Dúvidas Frequentes</a>
+            <a href="#contato">Contato</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
 <header>
     <h1>Joel Sousa</h1>
     <p>Advocacia Especializada e Consultoria Jurídica</p>
+    <a href="#agendar" class="btn-hero">Agendar uma Consulta</a>
 </header>
 
-<div class="container">
-    <h2>Sobre o Escritório</h2>
-    <p>Oferecemos soluções jurídicas personalizadas com ética, transparência e agilidade. Localizado em Teresina - PI, nosso compromisso é com a defesa dos seus direitos.</p>
-    
-    <h2>Agendar Consulta</h2>
-    <p>Preencha os dados abaixo para entrarmos em contato:</p>
-    
-    <form action="https://formspree.io/f/xaqkwnnn" method="POST">
-        <div class="form-group">
-            <label>Nome Completo:</label>
-            <input type="text" name="nome" required>
-        </div>
-        <div class="form-group">
-            <label>Seu E-mail:</label>
-            <input type="email" name="_replyto" required>
-        </div>
-        <div class="form-group">
-            <label>Assunto Jurídico:</label>
-            <textarea name="mensagem" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn-enviar">Solicitar Agendamento</button>
-    </form>
+<!-- SEÇÃO SOBRE -->
+<div class="container" id="sobre">
+    <h2 class="section-title">Sobre o Escritório</h2>
+    <div class="about-box">
+        <p>Oferecemos soluções jurídicas personalizadas com excelência, ética, transparência e agilidade. Sediado em Teresina - PI, nosso compromisso inabalável é com a defesa dos seus direitos e a segurança jurídica de suas decisões.</p>
+    </div>
 </div>
 
-<div class="container">
-    <h2>Contato</h2>
-    <p><i class="fas fa-phone"></i> (86) 99516-6192</p>
-    <p><i class="fas fa-map-marker-alt"></i> Av. Prefeito Hugo Bastos, Teresina - PI</p>
+<!-- SEÇÃO ÁREAS DE ATUAÇÃO -->
+<div class="container" id="atuacao">
+    <h2 class="section-title">Áreas de Atuação</h2>
+    <div class="grid-areas">
+        <div class="card-area">
+            <i class="fas fa-gavel"></i>
+            <h3>Direito Civil</h3>
+            <p>Resolução de conflitos, contratos, cobranças, direito do consumidor e assessoria preventiva.</p>
+        </div>
+        <div class="card-area">
+            <i class="fas fa-users"></i>
+            <h3>Família e Sucessões</h3>
+            <p>Inventários, divórcios, partilha de bens e planejamento sucessório com sensibilidade e sigilo.</p>
+        </div>
+        <div class="card-area">
+            <i class="fas fa-briefcase"></i>
+            <h3>Direito do Trabalho</h3>
+            <p>Defesa dos direitos trabalhistas e consultoria para empregados e empresas.</p>
+        </div>
+    </div>
 </div>
 
+<!-- SEÇÃO BIBLIOTECA JURÍDICA (NOTÍCIAS E FOTOS ATUALIZADAS) -->
+<div class="container" id="biblioteca">
+    <h2 class="section-title">Biblioteca Jurídica</h2>
+    <div class="grid-noticias">
+        
+        <!-- Notícia 1: Direito do Trabalho (Foto de ambiente corporativo / relógio) -->
+        <div class="card-noticia">
+            <div class="noticia-img-container">
+                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Gestão de tempo e ambiente corporativo moderno">
+            </div>
+            <div class="noticia-content">
+                <span class="noticia-tag">Direito do Trabalho</span>
+                <span class="noticia-data">Junho de 2026</span>
+                <h3>O Fim da Escala 6x1 e a Nova Jornada Semanal</h3>
+                <p>Aprovada na Câmara dos Deputados, a PEC que limita a jornada semanal a 40 horas prevê prazo de adaptação gradual para empresas.</p>
+                <button onclick="openModal('modal-trabalho')" class="btn-ler-mais">Ler a matéria completa <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Notícia 2: Direito de Família (Foto conceitual de acolhimento/família) -->
+        <div class="card-noticia">
+            <div class="noticia-img-container">
+                <img src="https://i.postimg.cc/90jKYV1X/Captura-de-tela-2026-06-12-154830.png" alt="Conceito de cuidado e relações familiares">
+            </div>
+            <div class="noticia-content">
+                <span class="noticia-tag">Família e Sucessões</span>
+                <span class="noticia-data">Maio de 2026</span>
+                <h3>Abandono Afetivo: Indenização contra Pais Omissos</h3>
+                <p>Legislação recente reforça o dever de cuidado na criação dos filhos, permitindo processos por danos morais mesmo em dia com a pensão.</p>
+                <button onclick="openModal('modal-familia')" class="btn-ler-mais">Ler a matéria completa <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Notícia 3: Direito Civil (Foto corporativa focada em planejamento, finanças e contratos) -->
+        <div class="card-noticia">
+            <div class="noticia-img-container">
+                <img src="https://i.postimg.cc/wv9j4KW9/Captura-de-tela-2026-06-12-154158.png" alt="Planejamento estratégico de negócios e contratos">
+            </div>
+            <div class="noticia-content">
+                <span class="noticia-tag">Direito Civil / Empresarial</span>
+                <span class="noticia-data">Janeiro de 2026</span>
+                <h3>A Transição e Adaptação das Empresas à Nova Reforma Tributária</h3>
+                <p>O ano de 2026 marca o início prático dos testes do IBS e da CBS em notas fiscais, exigindo reformulação em contratos e planejamentos.</p>
+                <button onclick="openModal('modal-civil')" class="btn-ler-mais">Ler a matéria completa <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- COMPONENTES MODAIS -->
+<div id="modal-trabalho" class="modal-noticia">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('modal-trabalho')">&times;</span>
+        <h2>O Fim da Escala 6x1 e a Nova Jornada Semanal</h2>
+        <div class="modal-meta">Direito do Trabalho • Atualizado em 2026</div>
+        <div class="modal-text">
+            <p>A Proposta de Emenda à Constituição (PEC) que altera a tradicional jornada de trabalho 6x1 avançou significativamente no cenário legislativo nacional após aprovação na Câmara dos Deputados, seguindo para o Senado Federal.</p>
+            <p>O texto aprovado estabelece a redução da jornada máxima de trabalho de 44 para 40 horas semanais, garantindo ao empregado duas folgas semanais remuneradas, que deverão ocorrer preferencialmente aos domingos. O ponto principal é que essa transição foi desenhada para ocorrer sem qualquer redução salarial.</p>
+            <p>Para evitar impactos bruscos na economia e dar fôlego ao empresariado, a lei fixa um prazo de transição de até 14 meses. A primeira etapa obriga a redução das duas primeiras horas semanais em até dois meses após a promulgação, e as duas horas restantes deverão ser implementadas em até um ano subsequente. Setores de operação contínua, como comércio e indústria, deverão readequar escalas e rever acordos coletivos com sindicatos com máxima atenção.</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal-familia" class="modal-noticia">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('modal-familia')">&times;</span>
+        <h2>Abandono Afetivo: Indenização contra Pais Omissos</h2>
+        <div class="modal-meta">Família e Sucessões • Atualizado em 2026</div>
+        <div class="modal-text">
+            <p>A consolidação legislativa recente no Direito de Família brasileiro reforçou juridicamente que a paternidade e a maternidade vão muito além do mero suporte financeiro. O dever de cuidado, presença e convivência na infância e adolescência agora é tratado com rigor normativo explícito.</p>
+            <p>Filhos que enfrentaram a ausência grave e injustificada de seus genitores na fase de desenvolvimento emocional ganharam o direito consolidado de pleitear indenizações civis por danos morais decorrentes de abandono afetivo.</p>
+            <p>O judiciário esclarece que o pagamento pontual da pensão alimentícia não isenta o responsável de suas obrigações afetivas e sociais. A ausência marcada por promessas não cumpridas e que comprovadamente gere sequelas psicológicas profundas abre espaço para a responsabilização civil. O foco central não é dar "preço ao amor", mas punir legalmente a omissão dolosa do dever de educar e assistir os filhos, garantido pela nossa Constituição.</p>
+        </div>
+    </div>
+</div>
+
+<div id="modal-civil" class="modal-noticia">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('modal-civil')">&times;</span>
+        <h2>A Transição e Adaptação das Empresas à Nova Reforma Tributária</h2>
+        <div class="modal-meta">Direito Civil e Empresarial • Atualizado em 2026</div>
+        <div class="modal-text">
+            <p>O ano de 2026 é considerado o marco zero e o período de testes práticos da Reforma Tributária na vida real dos contribuintes e das sociedades empresárias no Brasil. Trata-se do início da substituição gradativa dos tributos tradicionais.</p>
+            <p>Nesta fase inicial, os novos impostos (IBS - Imposto sobre Bens e Serviços e a CBS - Contribuição sobre Bens e Serviços) começam a constar nas notas fiscais emitidas de forma estritamente demonstrativa. Isso significa que as empresas alimentam o novo super sistema integrado da Receita Federal para simular os créditos fiscais em cadeia sem custos adicionais imediatos.</p>
+            <p>No âmbito do Direito Civil Contratual e Empresarial, a advocacia preventiva torna-se indispensável. Contratos de fornecimento de longo prazo, planejamentos sucessórios de holding e estruturas de prestação de serviços precisam passar por revisão urgente para abarcar as cláusulas de transição tributária, evitando passivos judiciais futuros quando a incidência dos novos tributos se tornar definitiva e obrigatória.</p>
+        </div>
+    </div>
+</div>
+
+<!-- SEÇÃO PERGUNTAS FREQUENTES (FAQ) -->
+<div class="container" id="faq">
+    <h2 class="section-title">Respostas para Dúvidas Frequentes</h2>
+    <div class="faq-container">
+        
+        <!-- Categoria 1: Direito Civil -->
+        <div class="faq-category-title">Direito Civil e do Consumidor</div>
+        
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> O que fazer se eu comprar um produto com defeito e a loja não quiser trocar?</div>
+            <div class="faq-answer">O Código de Defesa do Consumidor diz que o fornecedor tem até 30 dias para resolver o problema. Se não resolver, você pode escolher entre receber o dinheiro de volta, ter o produto trocado ou ganhar um desconto proporcional.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Um contrato de boca (verbal) tem validade na Justiça?</div>
+            <div class="faq-answer">Sim, contratos verbais são válidos por lei. O grande desafio é provar que ele existiu. Para isso, são usadas conversas de WhatsApp, e-mails, testemunhas e comprovantes de pagamento.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Comprei um produto pela internet e me arrependi. Posso devolver?</div>
+            <div class="faq-answer">Sim! Nas compras feitas fora de lojas físicas (internet ou telefone), você tem o direito de arrependimento de até 7 dias corridos, contados a partir do recebimento do produto, para devolvê-lo e receber todo o dinheiro de volta.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> O que caracteriza Danos Morais?</div>
+            <div class="faq-answer">Acontece quando uma situação ultrapassa o mero aborrecimento do dia a dia e fere gravemente a honra, a dignidade, o nome ou o bem-estar psicológico de uma pessoa (como uma cobrança indevida que negativa o nome no SPC sem motivo).</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Como cobrar uma pessoa que me deve e sumiu?</div>
+            <div class="faq-answer">Se você tiver um documento (cheque, nota promissória ou contrato assinado), podemos entrar com uma ação de execução para bloquear contas bancárias ou bens do devedor direto na justiça de forma mais rápida.</div>
+        </div>
+
+        <!-- Categoria 2: Direito do Trabalho -->
+        <div class="faq-category-title">Direito do Trabalho</div>
+        
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Fui demitido sem justa causa, quais são os meus direitos?</div>
+            <div class="faq-answer">Você tem direito a receber: saldo de salário dos dias trabalhados, aviso prévio, férias vencidas e proporcionais com acréscimo de 1/3, 13º salário proporcional, saque do FGTS com a multa de 40% e as guias do seguro-desemprego.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> O patrão pode atrasar o pagamento do salário até que dia do mês?</div>
+            <div class="faq-answer">O salário deve ser pago, impreterivelmente, até o 5º dia útil do mês seguinte ao trabalhado. Sábados contam como dia útil para esse cálculo. Atrasos frequentes podem gerar indenizações e processos.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> Quem trabalha em Home Office tem direito a receber hora extra?</div>
+            <div class="faq-answer">Depende. Se a empresa tiver meios tecnológicos e estruturais para controlar a sua jornada de trabalho (sistemas digitais de ponto, horários de login obrigatórios), você terá direito ao recebimento de horas extras se passar da jornada comum.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> O que acontece se a empresa não assinar a minha carteira de trabalho?</div>
+            <div class="faq-answer">A empresa está cometendo uma ilegalidade e pode ser multada. O trabalhador pode entrar com uma ação trabalhista para pedir o "Reconhecimento de Vínculo", garantindo retroativamente todos os direitos como FGTS, férias e décimo terceiro.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><i class="fas fa-question-circle"></i> O que é considerado Assédio Moral no ambiente profissional?</div>
+            <div class="faq-answer">É a exposição do trabalhador a situações humilhantes, constrangedoras ou repetitivas durante a jornada de trabalho (como apelidos ofensivos, metas impossíveis ou isolamento intencional). Isso dá direito a uma indenização na Justiça do Trabalho.</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SEÇÃO CONTATO E AGENDAMENTO -->
+<div class="container" id="contato">
+    <h2 class="section-title">Fale Conosco</h2>
+    
+    <div class="grid-contato">
+        <!-- Caixa de informações -->
+        <div class="info-contato">
+            <h2>Contato</h2>
+            <p style="margin-bottom: 30px; color: #cbd5e0;">Entre em contato conosco ou faça-nos uma visita. Estamos prontos para atender sua demanda.</p>
+            
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>(86) 99516-6192</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Av. Prefeito Hugo Bastos, Teresina - PI</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>Segunda a Sexta: 08h às 18h</span>
+            </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="form-box" id="agendar">
+            <form action="https://formspree.io/f/xaqkwnnn" method="POST">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" name="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label>Seu E-mail</label>
+                    <input type="email" name="_replyto" placeholder="exemplo@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Assunto Jurídico</label>
+                    <textarea name="mensagem" rows="4" placeholder="Descreva brevemente o seu caso..." required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Solicitar Agendamento</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- BOTÃO WHATSAPP FLUTUANTE -->
 <a href="https://api.whatsapp.com/send?phone=5586995166192&text=Olá! Gostaria de agendar uma consulta jurídica com o Dr. Joel." class="whatsapp-fixed" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
@@ -126,6 +774,26 @@
 <footer>
     <p>&copy; 2026 Joel Sousa Advocacia. Todos os direitos reservados.</p>
 </footer>
+
+<!-- SCRIPT LOGIC PARA OS MODAIS INTERNOS -->
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    window.onclick = function(event) {
+        if (event.target.className === 'modal-noticia') {
+            event.target.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+</script>
 
 </body>
 </html>
